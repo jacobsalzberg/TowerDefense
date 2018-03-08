@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Loader : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public GameObject gameManager;
+
+    private void Awake()
+    {
+    }
+
+    public class KeyValuePair<TKey,Tvalue> 
+    {
+        public TKey key;
+    }
 }

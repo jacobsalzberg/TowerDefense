@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95428153820899414}
   - component: {fileID: 50561309454890272}
   - component: {fileID: 61250889637183586}
+  - component: {fileID: 114476855673347900}
   m_Layer: 8
   m_Name: Enemy1
   m_TagString: Enemy
@@ -105,6 +106,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114476855673347900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274919464497972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062aec50d472a86429ae546b07390c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+  exitPoint: {fileID: 4474490546667044, guid: 88204e6431c4e8d4e83cc17d2e88dbf0, type: 2}
+  waypoints: []
+  navigationUpdate: 1
 --- !u!212 &212431086305298806
 SpriteRenderer:
   m_ObjectHideFlags: 1
