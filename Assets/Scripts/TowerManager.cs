@@ -25,10 +25,14 @@ public class TowerManager : Singleton<TowerManager> {
             {
                 hit.collider.tag = "BuildSiteFull";
                 PlaceTower(hit);
-            }
-                
+            }           
         }
-	}
+
+        if (spriteRenderer.enabled)
+        {
+            FollowMouse();
+        }
+    }
 
     public void PlaceTower (RaycastHit2D hit)
     {
@@ -36,10 +40,30 @@ public class TowerManager : Singleton<TowerManager> {
         {
             GameObject newTower = Instantiate(towerBtnPresed.TowerObject);
             newTower.transform.position = hit.transform.position;
+            DisableDragSprite();
         }
     }
     public void SelectedTower(TowerBtn towerSelected)
     {
         towerBtnPresed = towerSelected;
+        EnableDragSprite(towerBtnPresed.DragSprite);
+    }
+
+    public void FollowMouse()
+    {
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Make sure everything is on top of the page
+        transform.position = new Vector2(transform.position.x, transform.position.y);
+    }
+
+    public void EnableDragSprite(Sprite sprite)
+    {
+        spriteRenderer.enabled = true;
+        spriteRenderer.sprite = sprite;
+    }
+
+    public void DisableDragSprite()
+    {
+        spriteRenderer.enabled = false;
     }
 }
