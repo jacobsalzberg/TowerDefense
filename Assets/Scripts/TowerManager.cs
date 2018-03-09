@@ -6,10 +6,12 @@ using UnityEngine.EventSystems;
 public class TowerManager : Singleton<TowerManager> {
 
     private TowerBtn towerBtnPresed;
+    private SpriteRenderer spriteRenderer;
 
 	// Use this for initialization
 	void Start () {
-		
+        //going to look for spriterender in the towermanager
+        spriteRenderer = GetComponent<SpriteRenderer>(); 
 	}
 	
 	// Update is called once per frame
