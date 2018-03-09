@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    public int target = 0;
-    public Transform exitPoint; //transform is a location
-    public Transform[] waypoints;
+    [SerializeField]
+    private int target = 0;
+    [SerializeField]
+    private Transform exitPoint; //transform is a location
+    [SerializeField]
+    private Transform[] waypoints;
     //compared to deltatime, used for different computer clock speeds
-    public float navigationUpdate;
+    [SerializeField]
+    private float navigationUpdate;
 
     private Transform enemy;
     private float navigationTime = 0;
