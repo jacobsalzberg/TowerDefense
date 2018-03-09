@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - BuildSite
   - Ground
+  - Tower
+  - BuildSiteFull
   layers:
   - Default
   - TransparentFX
