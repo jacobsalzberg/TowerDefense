@@ -2,41 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
-    public static GameManager instance = null;
-    public GameObject spawnPoint;
-    public GameObject[] enemies;
-    public int maxEnemiesOnScreen;
-    public int totalEnemies;
-    public int enemiesPerSpawn;
+//Creates instance of GameManager. Gamamanger inherts from Singleton<GameManager>
+public class GameManager : Singleton<GameManager> {
+    
+    [SerializeField]
+    private GameObject spawnPoint;
+    [SerializeField]
+    private GameObject[] enemies;
+    [SerializeField]
+    private int maxEnemiesOnScreen;
+    [SerializeField]
+    private int totalEnemies;
+    [SerializeField]
+    private int enemiesPerSpawn;
 
 
     private int enemiesOnScreen = 0;
     const float spawnDelay = 0.5f;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if ( instance != this)
-        {
-            Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
-
-    }
     // Use this for initialization
     void Start () {
         //SpawnEnemy();
         StartCoroutine(Spawn());
-	}
-
-
- 
+	} 
 
     IEnumerator Spawn()
     {

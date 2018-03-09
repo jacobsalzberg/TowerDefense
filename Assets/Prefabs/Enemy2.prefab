@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95901565641922518}
   - component: {fileID: 50120468754887468}
   - component: {fileID: 61120434961780292}
+  - component: {fileID: 114374041889656438}
   m_Layer: 8
   m_Name: Enemy2
   m_TagString: Enemy
@@ -80,7 +81,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 0.696}
-    newSize: {x: 5, y: 3.48}
+    newSize: {x: 1, y: 0.696}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -97,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 1450890517172950}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 0bab5e86eefc489419798a59ad6134a6, type: 2}
+  m_Controller: {fileID: 22100000, guid: 947520adf4253eb4ea3b3831d1f8366f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -105,6 +106,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114374041889656438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450890517172950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062aec50d472a86429ae546b07390c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+  exitPoint: {fileID: 4474490546667044, guid: 88204e6431c4e8d4e83cc17d2e88dbf0, type: 2}
+  waypoints:
+  - {fileID: 4201593511087274, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4623860391795978, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4952176876781190, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4742338207591530, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4151144460487866, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4112717990162608, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4832089855996684, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4306922638722636, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  - {fileID: 4831621710727946, guid: eebcd9bdb66edb54eaa573613adfd279, type: 2}
+  navigationUpdate: 0.01
 --- !u!212 &212131184947013352
 SpriteRenderer:
   m_ObjectHideFlags: 1
