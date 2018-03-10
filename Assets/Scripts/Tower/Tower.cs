@@ -30,11 +30,23 @@ public class Tower : MonoBehaviour {
                 targetEnemy = nearestEnemy;
             }
         }
-
-        if (Vector2.Distance(transform.localPosition, targetEnemy.transform.localPosition) > attackRadius)
+        else
         {
-            targetEnemy = null;
+            if (attackCounter <= 0)
+            { //timed out our time between attacks
+                isAttacking = true;
+                //reset attack counter
+                attackCounter = timeBetweenAttacks;
+            } else
+            {
+                isAttacking = false;
+            }
+            if (Vector2.Distance(transform.localPosition, targetEnemy.transform.localPosition) > attackRadius)
+            {
+                targetEnemy = null;
+            }
         }
+        
 
 	}
 
@@ -46,9 +58,11 @@ public class Tower : MonoBehaviour {
 
     public void Attack()
     {
+        isAttacking = false;
         //eu que fiz primeira linha
         //Projectile newProjectile = new Projectile();
         Projectile newProjectile = Instantiate(projectile) as Projectile;
+        newProjectile.transform.localPosition = transform.localPosition;
 
         if (targetEnemy ==null)
         {
