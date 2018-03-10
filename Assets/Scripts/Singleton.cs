@@ -18,7 +18,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             else if (instance != FindObjectOfType<T>())
                 Destroy(FindObjectOfType<T>());
 
-            DontDestroyOnLoad(FindObjectOfType<T>());
+            //DontDestroyOnLoad(FindObjectOfType<T>());
             return instance;            
         }
     } 
