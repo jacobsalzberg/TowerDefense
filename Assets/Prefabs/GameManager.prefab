@@ -59,3 +59,4 @@ MonoBehaviour:
   maxEnemiesOnScreen: 8
   totalEnemies: 6
   enemiesPerSpawn: 1
+  EnemyList: []

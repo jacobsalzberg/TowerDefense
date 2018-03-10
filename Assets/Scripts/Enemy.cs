@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         enemy = GetComponent<Transform>();
+        GameManager.Instance.RegisterEnemy(this);
 	}
 	
 	// Update is called once per frame
@@ -51,8 +52,7 @@ public class Enemy : MonoBehaviour {
         }
         else if (other.tag == "Finish")
         {
-            GameManager.Instance.RemoveEnemyFromScreen();
-            DestroyObject(gameObject);
+            GameManager.Instance.UnregisterEnemy(this);            
         }
     }
 }

@@ -6,15 +6,12 @@ public enum ProType
 {
     rock, arrow, fireball
 };
-
-
-
-
 public class Projectile : MonoBehaviour {
 
     //each projectile is going to know its own attack strength
     [SerializeField]
     private int attackStrength;
+    //Valores serao colocados no inspector!!
     [SerializeField]
     private ProType projectileType;
 
