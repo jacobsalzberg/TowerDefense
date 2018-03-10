@@ -12,9 +12,12 @@ public class Enemy : MonoBehaviour {
     //compared to deltatime, used for different computer clock speeds
     [SerializeField]
     private float navigationUpdate;
+    [SerializeField]
+    private int healthPoints;
 
     private Transform enemy;
     private float navigationTime = 0;
+    private bool isDead = false;
 
 
     // Use this for initialization
@@ -53,6 +56,31 @@ public class Enemy : MonoBehaviour {
         else if (other.tag == "Finish")
         {
             GameManager.Instance.UnregisterEnemy(this);            
+        } else if (other.tag == "Projectile")
+        {
+            //get the projectile component so we can access inside the script
+            Projectile newP = other.gameObject.GetComponent<Projectile>();
+            // public getter on projectile that will work
+            EnemyHit(newP.AttackStrength);
+            Destroy(other.gameObject);
         }
     }
+
+    public void EnemyHit(int hitpoints)
+    {
+        if (healthPoints - hitpoints > 0)
+        {
+            healthPoints -= hitpoints;
+            //call hurt animation
+        } else {
+            //call death animation
+            //enemy should die
+        }
+    }
+
+    public void Die()
+    {
+        isDead = true;
+    }
+
 }

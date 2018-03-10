@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour {
     private float timeBetweenAttacks;
     [SerializeField]
     private float attackRadius;
+    [SerializeField]
     private Projectile projectile;
     private Enemy targetEnemy = null;
     private float attackCounter;
@@ -45,8 +46,7 @@ public class Tower : MonoBehaviour {
             {
                 targetEnemy = null;
             }
-        }
-        
+        }      
 
 	}
 
@@ -59,8 +59,6 @@ public class Tower : MonoBehaviour {
     public void Attack()
     {
         isAttacking = false;
-        //eu que fiz primeira linha
-        //Projectile newProjectile = new Projectile();
         Projectile newProjectile = Instantiate(projectile) as Projectile;
         newProjectile.transform.localPosition = transform.localPosition;
 
