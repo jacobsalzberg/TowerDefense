@@ -23,7 +23,7 @@ public class Tower : MonoBehaviour {
 	void Update ()
     {
         attackCounter -= Time.deltaTime; //everytime the update is called, its the framerate time
-        if (targetEnemy == null)
+        if (targetEnemy == null || targetEnemy.IsDead)
         {
             Enemy nearestEnemy = GetNearestEnemyInRange();
             if (nearestEnemy != null && Vector2.Distance(transform.localPosition, nearestEnemy.transform.localPosition) <= attackRadius)

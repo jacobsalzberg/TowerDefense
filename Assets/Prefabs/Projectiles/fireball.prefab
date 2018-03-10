@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4031473755091972}
   - component: {fileID: 212949932851205060}
   - component: {fileID: 58500992374193168}
-  m_Layer: 0
+  - component: {fileID: 114508686895425158}
+  m_Layer: 8
   m_Name: fireball
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,6 +57,19 @@ CircleCollider2D:
   m_Offset: {x: -0.06, y: 0}
   serializedVersion: 2
   m_Radius: 0.18
+--- !u!114 &114508686895425158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464418532932908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9059f9df50375cf4085e9ad38efbb142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackStrength: 100
+  projectileType: 2
 --- !u!212 &212949932851205060
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -87,8 +101,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1383701733
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 271627019f8abde4aab60f6a138e6e77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

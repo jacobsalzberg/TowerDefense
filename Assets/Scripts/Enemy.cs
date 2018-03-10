@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    [SerializeField]
-    private int target = 0;
+
+    
     [SerializeField]
     private Transform exitPoint; //transform is a location
     [SerializeField]
@@ -15,20 +15,31 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     private int healthPoints;
 
+    private int target = 0;
     private Transform enemy;
+    private Collider2D enemyCollider;
     private float navigationTime = 0;
     private bool isDead = false;
+
+    public bool IsDead
+    {
+        get
+        {
+            return isDead;
+        }
+    }
 
 
     // Use this for initialization
     void Start () {
         enemy = GetComponent<Transform>();
+        enemyCollider = GetComponent<Collider2D>();
         GameManager.Instance.RegisterEnemy(this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (waypoints != null)
+		if (waypoints != null && !isDead)
         {
             navigationTime += Time.deltaTime; //vai somando o deltatime
             //se for maior que o update
@@ -75,12 +86,14 @@ public class Enemy : MonoBehaviour {
         } else {
             //call death animation
             //enemy should die
+            Die();
         }
     }
 
     public void Die()
     {
         isDead = true;
+        enemyCollider.enabled = false;
     }
 
 }

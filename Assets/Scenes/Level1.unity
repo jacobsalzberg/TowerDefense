@@ -16650,6 +16650,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114042144678232272, guid: 532406bc81485ee4b81a03a9610e4c00,
+        type: 2}
+      propertyPath: enemiesPerSpawn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 532406bc81485ee4b81a03a9610e4c00, type: 2}
   m_IsPrefabParent: 0
@@ -30530,6 +30535,21 @@ Prefab:
     - target: {fileID: 4248395173932344, guid: 674191a14feeb244f9c3a269ac41601b, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212300791786907992, guid: 674191a14feeb244f9c3a269ac41601b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -1383701733
+      objectReference: {fileID: 0}
+    - target: {fileID: 212300791786907992, guid: 674191a14feeb244f9c3a269ac41601b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212300791786907992, guid: 674191a14feeb244f9c3a269ac41601b,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 674191a14feeb244f9c3a269ac41601b, type: 2}
