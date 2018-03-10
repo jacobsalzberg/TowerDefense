@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour {
     private Collider2D enemyCollider;
     private float navigationTime = 0;
     private bool isDead = false;
+    private Animator anim;
 
     public bool IsDead
     {
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour {
     void Start () {
         enemy = GetComponent<Transform>();
         enemyCollider = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
         GameManager.Instance.RegisterEnemy(this);
 	}
 	
@@ -82,10 +84,9 @@ public class Enemy : MonoBehaviour {
         if (healthPoints - hitpoints > 0)
         {
             healthPoints -= hitpoints;
-            //call hurt animation
+            anim.Play("Hurt");
         } else {
-            //call death animation
-            //enemy should die
+            anim.SetTrigger("didDie");
             Die();
         }
     }
