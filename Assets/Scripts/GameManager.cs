@@ -39,6 +39,7 @@ public class GameManager : Singleton<GameManager> {
     private int totalKilled = 0;
     private int whichEnemiesToSpawn = 0;
     private GameStatus currentState = GameStatus.play;
+    private AudioSource audioSource;
 
     public List<Enemy> EnemyList = new List<Enemy>();
 
@@ -94,10 +95,19 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
+    public AudioSource AudioSource
+    {
+        get
+        {
+            return audioSource;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         //Hides the button
         playBtn.gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
         ShowMenu();
         //SpawnEnemy();
         //StartCoroutine(Spawn());
@@ -190,7 +200,7 @@ public class GameManager : Singleton<GameManager> {
             //lost game
             case GameStatus.gameover:
                 playBtnLbl.text = "Play Again!";
-                //add gameover sounds
+                AudioSource.PlayOneShot(SoundManager.Instance.GameOver);
                 break;
             // just completed a wave
             case GameStatus.next:
@@ -224,6 +234,7 @@ public class GameManager : Singleton<GameManager> {
                 TowerManager.Instance.RenameTagsBuildSite();
                 totalMoneyLbl.text = TotalMoney.ToString();
                 totalEscapedLbl.text = "Escaped" + TotalEscaped + "/10";
+                audioSource.PlayOneShot(SoundManager.Instance.NewGame);
                 break;
         }
 

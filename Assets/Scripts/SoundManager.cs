@@ -49,11 +49,11 @@ public class SoundManager : Singleton<SoundManager> {
             return gameover;
         }
     }
-    public AudioClip Arrow
+    public AudioClip Rock
     {
         get
         {
-            return arrow;
+            return rock;
         }
     }
     public AudioClip Hit

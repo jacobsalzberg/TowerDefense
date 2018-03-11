@@ -9,52 +9,52 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1650271157340394}
+  m_RootGameObject: {fileID: 1483728182219250}
   m_IsPrefabParent: 1
---- !u!1 &1650271157340394
+--- !u!1 &1483728182219250
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4906404156864556}
-  - component: {fileID: 114042144678232272}
-  - component: {fileID: 82261301457030808}
+  - component: {fileID: 4684120842070396}
+  - component: {fileID: 82510471515361054}
+  - component: {fileID: 114338452004928336}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4906404156864556
+--- !u!4 &4684120842070396
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650271157340394}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1483728182219250}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.018334597, y: 1.0467594, z: 13.296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82261301457030808
+--- !u!82 &82510471515361054
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650271157340394}
+  m_GameObject: {fileID: 1483728182219250}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f49d2af558f468d4580ad9bcf7830054, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -108,7 +108,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -121,28 +121,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114042144678232272
+--- !u!114 &114338452004928336
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650271157340394}
+  m_GameObject: {fileID: 1483728182219250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec15be5f9dbd3d342848a108f41987c1, type: 3}
+  m_Script: {fileID: 11500000, guid: e8402376f6e210f43bc608bc4e54a18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalWaves: 10
-  totalMoneyLbl: {fileID: 0}
-  currentWaveLbl: {fileID: 0}
-  totalEscapedLbl: {fileID: 0}
-  spawnPoint: {fileID: 1795477983789188, guid: ac196d9b7a2c989478c22b4c7a668c36, type: 2}
-  enemies:
-  - {fileID: 1450890517172950, guid: ae0bdb02ad35b1042bee88d30e04fe81, type: 2}
-  - {fileID: 1274919464497972, guid: 5712fb3c206a0a140b48f1b2e93866b4, type: 2}
-  - {fileID: 1056269637840782, guid: a4d374622cb37884bad5ff819b2c9065, type: 2}
-  totalEnemies: 3
-  enemiesPerSpawn: 1
-  playBtnLbl: {fileID: 0}
-  playBtn: {fileID: 0}
-  EnemyList: []
+  arrow: {fileID: 8300000, guid: a1d34caa79683204da547ebdf9fee24b, type: 3}
+  death: {fileID: 8300000, guid: 00f600e8af63a104bb70ce40f37f8936, type: 3}
+  fireball: {fileID: 8300000, guid: c59a92abdd438f04aafd55b27a8f49a0, type: 3}
+  gameover: {fileID: 8300000, guid: 3d129ca12d1fb1e4ab01624de6678580, type: 3}
+  hit: {fileID: 8300000, guid: 401602d66fc3cbf45be697cfa84cf5d1, type: 3}
+  level: {fileID: 8300000, guid: f49d2af558f468d4580ad9bcf7830054, type: 3}
+  newGame: {fileID: 8300000, guid: 9e72cb43d8f6c78459a02211d03ef2ee, type: 3}
+  rock: {fileID: 8300000, guid: 8e7681f1fbafe754ca65b6c5207d15dc, type: 3}
+  towerBuilt: {fileID: 8300000, guid: 247b8934c12a2d44eb943a5a2e440ec0, type: 3}
