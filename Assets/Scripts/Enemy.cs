@@ -73,7 +73,8 @@ public class Enemy : MonoBehaviour {
             //if enemies hit the end, add to both roundescaped and totalescaped
             GameManager.Instance.RoundEscaped += 1;
             GameManager.Instance.TotalEscaped += 1;
-            GameManager.Instance.UnregisterEnemy(this);            
+            GameManager.Instance.UnregisterEnemy(this);
+            GameManager.Instance.IsWaveOver();
         } else if (other.tag == "Projectile")
         {
             //get the projectile component so we can access inside the script
@@ -101,6 +102,9 @@ public class Enemy : MonoBehaviour {
         isDead = true;
         enemyCollider.enabled = false;
         GameManager.Instance.TotalKilled += 1;
+        GameManager.Instance.AddMoney(rewardAmt);
+        GameManager.Instance.IsWaveOver();
+
     }
 
 }

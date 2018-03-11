@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private int maxEnemiesOnScreen;
     [SerializeField]
-    private int totalEnemies;
+    private int totalEnemies=3;
     [SerializeField]
     private int enemiesPerSpawn;
     [SerializeField]
@@ -207,6 +207,31 @@ public class GameManager : Singleton<GameManager> {
 
         }
         playBtn.gameObject.SetActive(true);
+    }
+
+    public void PlayBtnPressed()
+    {
+        switch(currentState)
+        {
+            case GameStatus.next:
+                waveNumber += 1;
+                totalEnemies += waveNumber;
+                break;
+            default:
+                totalEnemies = 3;
+                TotalEscaped = 0;
+                TotalMoney = 10;
+                totalMoneyLbl.text = TotalMoney.ToString();
+                totalEscapedLbl.text = "Escaped" + TotalEscaped + "/10";
+                break;
+        }
+
+        DestroyAllEnemies();
+        TotalKilled = 0; // only cares for this during a wave
+        RoundEscaped = 0; //only cares for this during a wave
+        currentWaveLbl.text = "Wave " + (waveNumber + 1);
+        //need to spawn enemies:
+        StartCoroutine(Spawn());
     }
 
     private void HandleEscape()
