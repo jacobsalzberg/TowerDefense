@@ -17,6 +17,7 @@ public class TowerManager : Singleton<TowerManager> {
         //going to look for spriterender in the towermanager
         spriteRenderer = GetComponent<SpriteRenderer>();
         buildTile = GetComponent<Collider2D>();
+        spriteRenderer.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -28,7 +29,9 @@ public class TowerManager : Singleton<TowerManager> {
 
             if (hit.collider.tag == "BuildSite")
             {
-                hit.collider.tag = "BuildSiteFull";
+                buildTile = hit.collider;
+                buildTile.tag = "BuildSiteFull";
+                RegisterBuildSite(buildTile);
                 PlaceTower(hit);
             }           
         }
@@ -71,9 +74,10 @@ public class TowerManager : Singleton<TowerManager> {
     {
         if (!EventSystem.current.IsPointerOverGameObject() && towerBtnPresed !=null )
         {
-            GameObject newTower = Instantiate(towerBtnPresed.TowerObject);
+            Tower newTower = Instantiate(towerBtnPresed.TowerObject);
             newTower.transform.position = hit.transform.position;
             BuyTower(towerBtnPresed.TowerPrice);
+            RegisterTower(newTower);
             DisableDragSprite();
         }
     }
@@ -110,6 +114,6 @@ public class TowerManager : Singleton<TowerManager> {
     public void DisableDragSprite()
     {
         spriteRenderer.enabled = false;
-        //towerBtnPresed = null;
+        towerBtnPresed = null;
     }
 }

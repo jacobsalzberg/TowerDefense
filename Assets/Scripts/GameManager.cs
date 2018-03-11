@@ -215,10 +215,13 @@ public class GameManager : Singleton<GameManager> {
                 waveNumber += 1;
                 totalEnemies += waveNumber;
                 break;
+            // play game for first time or gameover
             default:
                 totalEnemies = 3;
                 TotalEscaped = 0;
                 TotalMoney = 10;
+                TowerManager.Instance.DestroyAllTower();
+                TowerManager.Instance.RenameTagsBuildSite();
                 totalMoneyLbl.text = TotalMoney.ToString();
                 totalEscapedLbl.text = "Escaped" + TotalEscaped + "/10";
                 break;
