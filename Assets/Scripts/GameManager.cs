@@ -9,8 +9,6 @@ public enum GameStatus
     next,play,gameover,win
 };
 
-
-
 //Creates instance of GameManager. Gamamanger inherts from Singleton<GameManager>
 public class GameManager : Singleton<GameManager> {
     [SerializeField]
@@ -63,8 +61,12 @@ public class GameManager : Singleton<GameManager> {
 
     // Use this for initialization
     void Start () {
+        //Hides the button
+        playBtn.gameObject.SetActive(false);
+        showMenu();
         //SpawnEnemy();
-        //SartCoroutine(Spawn());
+        //StartCoroutine(Spawn());
+
 	} 
 
     IEnumerator Spawn()
@@ -114,4 +116,27 @@ public class GameManager : Singleton<GameManager> {
         TotalMoney -= amount;
     }
 
+    public void ShowMenu()
+    {
+        switch (currentState)
+        {
+            //lost game
+            case GameStatus.gameover:
+                playBtnLbl.text = "Play Again!";
+                //add gameover sounds
+                break;
+            // just completed a wave
+            case GameStatus.next:
+                playBtnLbl.text = "Next Wave";
+                break;
+            case GameStatus.play:
+                playBtnLbl.text = "Play";
+                break;
+            case GameStatus.win:
+                playBtnLbl.text = "Play";
+                break;          
+
+        }
+        playBtn.gameObject.SetActive(true);
+    }
 }
