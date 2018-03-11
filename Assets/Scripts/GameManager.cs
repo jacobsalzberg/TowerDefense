@@ -1,10 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+public enum GameStatus
+{
+    next,play,gameover,win
+};
+
+
 
 //Creates instance of GameManager. Gamamanger inherts from Singleton<GameManager>
 public class GameManager : Singleton<GameManager> {
-    
+    [SerializeField]
+    private int totalWaves = 10;
+    [SerializeField]
+    private Text totalMoneyLbl; //label, upper left corner
+    [SerializeField]
+    private Text currentWaveLbl;
+    [SerializeField]
+    private Text totalEscapedLbl;
     [SerializeField]
     private GameObject spawnPoint;
     [SerializeField]
@@ -15,16 +31,42 @@ public class GameManager : Singleton<GameManager> {
     private int totalEnemies;
     [SerializeField]
     private int enemiesPerSpawn;
+    [SerializeField]
+    private Text playBtnLbl;
+    [SerializeField]
+    private Button playBtn;
+
+    private int waveNumber = 0;
+    private int totalMoney = 10;
+    private int totalEscaped = 0;
+    private int roundEscaped = 0;
+    private int totalKilled = 0;
+    private int whichEnemiesToSpawn = 0;
+    private GameStatus currentState = GameStatus.play;
 
     public List<Enemy> EnemyList = new List<Enemy>();
 
     const float spawnDelay = 0.5f;
 
+    public int TotalMoney
+    {
+        get
+        {
+            return totalMoney;
+        }
+        set
+        {
+            totalMoney = value;
+            totalMoneyLbl.text = totalMoney.ToString();
+        }
+    }
+
     // Use this for initialization
     void Start () {
         //SpawnEnemy();
-        StartCoroutine(Spawn());
+        //SartCoroutine(Spawn());
 	} 
+
     IEnumerator Spawn()
     {
         if (enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies)
@@ -59,8 +101,17 @@ public class GameManager : Singleton<GameManager> {
         {
             Destroy(enemy.gameObject);
         }
-
         EnemyList.Clear();
-
     }
+
+    public void AddMoney(int amount)
+    {
+        TotalMoney += amount;
+    }
+
+    public void SubtractMoney (int amount)
+    {
+        TotalMoney -= amount;
+    }
+
 }
