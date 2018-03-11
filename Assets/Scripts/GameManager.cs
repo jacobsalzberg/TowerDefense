@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private GameObject spawnPoint;
     [SerializeField]
-    private GameObject[] enemies;
+    private Enemy[] enemies;
     [SerializeField]
     private int totalEnemies=3;
     [SerializeField]
@@ -38,6 +38,7 @@ public class GameManager : Singleton<GameManager> {
     private int roundEscaped = 0;
     private int totalKilled = 0;
     private int whichEnemiesToSpawn = 0;
+    private int enemiesToSpawn = 0; //between 0 and 2, as we have 3 enemies
     private GameStatus currentState = GameStatus.play;
     private AudioSource audioSource;
 
@@ -127,7 +128,7 @@ public class GameManager : Singleton<GameManager> {
             {
                 if (EnemyList.Count < totalEnemies)
                 {
-                    GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
+                    Enemy newEnemy = Instantiate(enemies[Random.Range(0,2)]) as Enemy;
                     newEnemy.transform.position = spawnPoint.transform.position;
                 }
             }
@@ -171,6 +172,11 @@ public class GameManager : Singleton<GameManager> {
         totalEscapedLbl.text = "Escaped" + TotalEscaped + "/10";
         if ((RoundEscaped + TotalKilled) == totalEnemies)
         {
+            if (waveNumber <= enemies.Length)
+            {
+                //wave 0-> spawn enemy 1, wave 1-> spawn enemy 2
+                enemiesToSpawn = waveNumber;
+            }
             SetCurrentGameState();
             ShowMenu();
         }
@@ -230,6 +236,8 @@ public class GameManager : Singleton<GameManager> {
                 totalEnemies = 3;
                 TotalEscaped = 0;
                 TotalMoney = 10;
+                //skully spawns at begging
+                enemiesToSpawn = 0;
                 TowerManager.Instance.DestroyAllTower();
                 TowerManager.Instance.RenameTagsBuildSite();
                 totalMoneyLbl.text = TotalMoney.ToString();
