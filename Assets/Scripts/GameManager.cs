@@ -63,11 +63,16 @@ public class GameManager : Singleton<GameManager> {
     void Start () {
         //Hides the button
         playBtn.gameObject.SetActive(false);
-        showMenu();
+        ShowMenu();
         //SpawnEnemy();
         //StartCoroutine(Spawn());
 
-	} 
+	}
+
+    private void Update()
+    {
+        HandleEscape();
+    }
 
     IEnumerator Spawn()
     {
@@ -138,5 +143,14 @@ public class GameManager : Singleton<GameManager> {
 
         }
         playBtn.gameObject.SetActive(true);
+    }
+
+    private void HandleEscape()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TowerManager.Instance.DisableDragSprite();
+            TowerManager.Instance.towerBtnPresed = null;
+        }
     }
 }
