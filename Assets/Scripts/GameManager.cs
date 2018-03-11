@@ -46,6 +46,43 @@ public class GameManager : Singleton<GameManager> {
 
     const float spawnDelay = 0.5f;
 
+    public int TotalEscaped
+    {
+        get
+        {
+            return totalEscaped;
+        }
+        set
+        {
+            totalEscaped = value;
+        }
+    }
+
+    public int RoundEscaped
+    {
+        get
+        {
+            return roundEscaped;
+        }
+        set
+        {
+            roundEscaped = value;
+        }
+    }
+
+    public int TotalKilled
+    {
+        get
+        {
+            return totalKilled;
+        }
+        set
+        {
+            totalKilled = value;
+        }
+    }
+
+
     public int TotalMoney
     {
         get
@@ -119,6 +156,33 @@ public class GameManager : Singleton<GameManager> {
     public void SubtractMoney (int amount)
     {
         TotalMoney -= amount;
+    }
+
+    public void IsWaveOver()
+    {
+        totalEscapedLbl.text = "Escaped" + TotalEscaped + "/10";
+        if ((RoundEscaped + TotalKilled) == totalEnemies)
+        {
+            SetCurrentGameState();
+            ShowMenu();
+        }
+    }
+
+    public void SetCurrentGameState()
+    {
+        if (TotalEscaped >= 10) //stuck to 10, magic numbering or something (forgot the term)
+        {
+            currentState = GameStatus.gameover;
+        } else if (waveNumber==0 && (TotalKilled + RoundEscaped) == 00)
+        {
+            currentState = GameStatus.play;
+        } else if (waveNumber >= totalWaves)
+        {
+            currentState = GameStatus.win;
+        } else
+        {
+            currentState = GameStatus.next;
+        }
     }
 
     public void ShowMenu()

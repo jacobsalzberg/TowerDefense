@@ -70,6 +70,9 @@ public class Enemy : MonoBehaviour {
         }
         else if (other.tag == "Finish")
         {
+            //if enemies hit the end, add to both roundescaped and totalescaped
+            GameManager.Instance.RoundEscaped += 1;
+            GameManager.Instance.TotalEscaped += 1;
             GameManager.Instance.UnregisterEnemy(this);            
         } else if (other.tag == "Projectile")
         {
@@ -97,6 +100,7 @@ public class Enemy : MonoBehaviour {
     {
         isDead = true;
         enemyCollider.enabled = false;
+        GameManager.Instance.TotalKilled += 1;
     }
 
 }
